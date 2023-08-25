@@ -31,14 +31,11 @@ end
 local function build_payload(request)
   local params = config.get().query_params
   local request_body = {
-    inputs = build_inputs(request.before, request.after),
-    parameters = {
-      max_new_tokens = params.max_new_tokens,
-      temperature = params.temperature,
-      do_sample = params.temperature > 0,
-      top_p = params.top_p,
-      stop = { params.stop_token },
-    },
+    prompt = build_inputs(request.before, request.after),
+    max_tokens = params.max_new_tokens,
+    temperature = params.temperature,
+    top_p = params.top_p,
+    stop = params.stop_token,
   }
   local f = assert(io.open(os.getenv("HOME") .. "/.tmp_llm_inputs.json", "w"))
   f:write(json.encode(request_body))
