@@ -15,7 +15,7 @@ local function build_inputs(before, after)
 end
 
 local function extract_generation(data)
-  local decoded_json = json.decode(data)
+  local decoded_json = json.decode(data[1])
   if decoded_json == nil then
     vim.notify("[LLM] error getting response from API", vim.log.levels.ERROR)
     return ""
