@@ -9,9 +9,6 @@ local function create_cmds()
   vim.api.nvim_create_user_command("LLMToggleAutoSuggest", function()
     completion.toggle_suggestion()
   end, {})
-  vim.api.nvim_create_user_command("LLMSuggestion", function()
-    completion.complete()
-  end, {})
 end
 
 function M.setup(opts)
